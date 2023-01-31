@@ -29,7 +29,17 @@ public class MazeVacuumEnvironment extends VacuumEnvironment {
 	private final int yDimension;
 
 	public MazeVacuumEnvironment(int xDim, int yDim) {
-		this(xDim, yDim, 0.5, 0);
+		//this(xDim, yDim, 0.5, 0);
+		super(createLocations(xDim * yDim));
+		xDimension = xDim;
+		yDimension = yDim;
+		
+		for( String loc : getLocations()){
+			LocationState state = LocationState.Clean;
+			envState.setLocationstate(loc, state);
+		}
+		
+		envstate.setLocationState(location:"Y", LocationState.Dirty);
 	}
 
 	// Obstacles are marked by with locationState==null
